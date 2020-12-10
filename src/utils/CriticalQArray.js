@@ -1,6 +1,11 @@
 export const CriticalQArray = [
     {
         question: "Would you rather 1 million salmon or 1 million dollars?",
+        index: "0",
+    },
+
+    {
+        question: "Would you rather fight Mike Cannon-Brookes or Scott Farquhar?",
         index: "1",
     },
 
@@ -14,7 +19,7 @@ export const CriticalQArray = [
         index: "3",
     },
 
-          {
+    {
         question: "If you had to bring 5 items to an island what would you bring?",
         index: "4",
     },
@@ -33,17 +38,17 @@ export const CriticalQArray = [
         question: "Someone is a Jehovah's witness and you need to give them a blood transfusion for them to survive, however they do not accept blood transfusions. What do you do?",
         index: "7",
     },
-    
+
     {
         question: "Considering your own values and needs, which medieval occupation would in your opinion have provided the best quality of life?",
         index: "8",
     },
-    
+
     {
         question: "If you were the leader of your country, what changes would you make to the current state of your nation, and how would you justify those changes?",
         index: "9",
     },
-    
+
     {
         question: "In your opinion, what is the most fundamentally urgent issue in our world, and why do you feel this way?",
         index: "10",
