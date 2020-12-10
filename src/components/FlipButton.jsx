@@ -17,16 +17,16 @@ const useStyles = makeStyles({
 
 
 const FlipButton = (props) => {
+  const classes = useStyles();
   return (
     <div style={{ margin: "40px auto", textAlign: "center" }}>
-      <button onClick={() => props.flip()}>Flip</button>
+      <Button className={classes.root} onClick={() => props.flip()}> Flip</Button>
     </div>
   );
 };
 
 FlipButton.propTypes = {
   shuffle: PropTypes.func,
-  nextCard: PropTypes.func,
   flip: PropTypes.func,
   deckArray: PropTypes.array
 };

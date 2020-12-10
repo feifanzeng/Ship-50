@@ -8,6 +8,7 @@ import cardImage from "../style/images/spot-hero-image.svg"
 //export default () => <Button>Default button</Button>;
 
 import "../style/components/card.scss";
+import FlipButton from "./FlipButton";
 
 // const useStyles = makeStyles({
 //   root :{
@@ -22,7 +23,7 @@ import "../style/components/card.scss";
 
 const Card = (props) => {
 
-  const { card, front, color, question } = props;
+  const { card, front, color, question, nextCard, flip} = props;
 
   //const classes = useStyles();
 
@@ -34,8 +35,7 @@ const Card = (props) => {
           <img className="card-image" src={cardImage}/>
             <p className="card-question"> {question} </p>
         </div>
-        <NextButton> Next</NextButton>
-        {/* <Button className={classes.root}> Next</Button> */}
+        <NextButton nextCard={nextCard} > Next</NextButton>
       </div> 
     );
   } else {
@@ -43,6 +43,7 @@ const Card = (props) => {
       //switch with our atlassian theme picture
       <div className="card-container">
         <img className="back-card" src={backCardImage} />
+        <FlipButton flip={flip}> Flip </FlipButton>
       </div>
     );
   };
@@ -53,7 +54,8 @@ Card.propTypes = {
   card: PropTypes.string,
   front: PropTypes.bool,
   color: PropTypes.string,
-  question: PropTypes.string
+  question: PropTypes.string,
+  nextCard: PropTypes.func
 };
 
 export default Card;

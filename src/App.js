@@ -21,7 +21,7 @@ class App extends Component {
       IcebreakQArray: IcebreakQArray,
       CriticalQArray: CriticalQArray,
       cardPicked: [],
-      front: false
+      front: true
     };
   };
 
