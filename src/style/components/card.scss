@@ -2,16 +2,17 @@
 
 
 .card-container {
-  height: 282px;
-  width: 200px;
+  height: 300px;
+  width: 250px;
   background-color: white;
   background-size: cover;
   position: relative;
   border: 1px solid black;
   border-radius: 10px;
-  margin-left: -188px;
+  margin-left: -238px;
   font-size: 20px;
   text-align: center;
+  overflow: hidden;
   @include transition (all, 0.25s, ease);
   @include bp-medium {
     margin-left: -195px;
@@ -22,4 +23,20 @@
   @include bp-mobileOnly {
     margin-left: -200px;    
   }
+}
+
+.card-image{
+  object-fit: cover;
+  width: 100%;
+}
+
+.back-card{
+  object-fit: cover;  
+  height: 100%;
+  width: 250px;
+}
+
+.card-question{
+  text-align: center;
+  margin-bottom: 10px;
 }
