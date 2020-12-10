@@ -36,22 +36,22 @@ class App extends Component {
   };
 
   nextCard = (array, category) => {
-    console.log(array);
-    // let cardsArray = array;
-    let cardsArray = array;
-    const randomItem = cardsArray[Math.floor(Math.random() * cardsArray.length)];
-    const newCardsArray = cardsArray.filter(element => element.index !== randomItem.index)
-    if (category == 0) {
-      this.setState({ IcebreakQArray: newCardsArray });
-    } else if (category == 1) {
-      this.setState({ CriticalQArray: newCardsArray });
-    } else {
-      this.setState({ DeeperQArray: newCardsArray });
+    if (array.length != 0) {
+      let cardsArray = array;
+      const randomItem = cardsArray[Math.floor(Math.random() * cardsArray.length)];
+      const newCardsArray = cardsArray.filter(element => element.index !== randomItem.index)
+      if (category == 0) {
+        this.setState({ IcebreakQArray: newCardsArray });
+      } else if (category == 1) {
+        this.setState({ CriticalQArray: newCardsArray });
+      } else {
+        this.setState({ DeeperQArray: newCardsArray });
+      }
+      let cardsPickedArray = this.state.cardPicked;
+      cardsPickedArray.length < 52 &&
+        cardsPickedArray.push(randomItem);
+      this.setState({ cardPicked: cardsPickedArray })
     }
-    let cardsPickedArray = this.state.cardPicked;
-    cardsPickedArray.length < 52 &&
-      cardsPickedArray.push(randomItem);
-    this.setState({ cardPicked: cardsPickedArray })
   };
 
 
@@ -69,59 +69,59 @@ class App extends Component {
 
     return (
       <>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "50px", fontSize: "100px" }}>
-          <h1>Connect Anywhere</h1>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "50px", fontSize: "100px" }}>
+            <h1>Connect Anywhere</h1>
+          </div>
+          <div style={{ width: "100%", display: "flex" }}>
+            <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282, }}>
+
+              {IcebreakQArray && IcebreakQArray.map((card, index) => {
+                return (
+                  <div className="animated slideInDown" key={index}>
+                    <Card front={!this.state.front} question={card.question} />
+                  </div>
+                );
+              })}
+            </div>
+
+            <ActionsButtons nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip} deckArray={IcebreakQArray} />
+
+            <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
+              {CriticalQArray && CriticalQArray.map((card, index) => {
+                return (
+                  <div className="animated slideInDown" key={index}>
+                    <Card front={!this.state.front} question={card.question} />
+                  </div>
+                );
+              })}
+            </div>
+
+            <ActionsButtons nextCard={() => this.nextCard(this.state.CriticalQArray, 1)} flip={this.flip} deckArray={CriticalQArray} />
+
+
+            <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
+              {DeeperQArray && DeeperQArray.map((card, index) => {
+                return (
+                  <div className="animated slideInDown" key={index}>
+                    <Card front={!this.state.front} question={card.question} />
+                  </div>
+                );
+              })}
+            </div>
+
+            <ActionsButtons nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip} deckArray={DeeperQArray} />
+
+          </div>
         </div>
-        <div style={{ width: "100%", display: "flex" }}>
-          <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282, }}>
-
-            {IcebreakQArray && IcebreakQArray.map((card, index) => {
-              return (
-                <div className="animated slideInDown" key={index}>
-                  <Card front={!this.state.front} question={card.question} />
-                </div>
-              );
-            })}
-          </div>
-
-          <ActionsButtons nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip} deckArray={IcebreakQArray} />
-
-          <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
-            {cardsPickedArray && cardsPickedArray.map((card, index) => {
-              return (
-                <div className="animated slideInUp" key={index}>
-                  <Card front={true} question={card.question} />
-                </div>
-              );
-            })}
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
-            {CriticalQArray && CriticalQArray.map((card, index) => {
-              return (
-                <div className="animated slideInDown" key={index}>
-                  <Card front={!this.state.front} question={card.question} />
-                </div>
-              );
-            })}
-          </div>
-
-          <ActionsButtons nextCard={() => this.nextCard(this.state.CriticalQArray, 1)} flip={this.flip} deckArray={CriticalQArray} />
-
-
-          <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
-            {DeeperQArray && DeeperQArray.map((card, index) => {
-              return (
-                <div className="animated slideInDown" key={index}>
-                  <Card front={!this.state.front} question={card.question} />
-                </div>
-              );
-            })}
-          </div>
-
-          <ActionsButtons nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip} deckArray={DeeperQArray} />
-
-
+        <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
+          {cardsPickedArray && cardsPickedArray.map((card, index) => {
+            return (
+              <div className="animated slideInUp" key={index}>
+                <Card front={true} question={card.question} />
+              </div>
+            );
+          })}
         </div>
       </>
     );
