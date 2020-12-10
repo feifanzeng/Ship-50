@@ -19,6 +19,7 @@
 
 
 body {
+  background-image: url('./images/NewBackground99.png');
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
@@ -27,7 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   min-height: 100vh;
   button {
     border: none;
