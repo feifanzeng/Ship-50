@@ -5,6 +5,15 @@ import { DeeperQArray } from "./utils/DeeperQArray.js";
 import { IcebreakQArray } from "./utils/IcebreakQArray.js";
 import { CriticalQArray } from "./utils/CriticalQArray.js";
 import {Helmet} from 'react-helmet';
+import "./style/components/card.scss";
+import NextButton from "./components/NextButton";
+
+
+// TODO: Figure out how to flip cards onto its back side after it has been viewed (should only display current card + question to user)
+//       Move Flip button out of Card component so it sits below the decks of cards? <-- follow up with designers 
+//       Choose name for the App, and adjust padding accordingly when switching from "Change anywhere"
+//       Change Favicon to Atlassian theme
+//       Choose better background? Or insert some kind of picture 
 
 class App extends Component {
 
@@ -16,11 +25,8 @@ class App extends Component {
       CriticalQArray: CriticalQArray,
       cardPicked: [],
       front: true,
-      renderButton: true
     };
   };
-
-
 
   shuffle = (array) => {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -61,7 +67,6 @@ class App extends Component {
 
 
   render() {
-    // const cardsArray = this.state.cardsArray;
     const cardsPickedArray = this.state.cardPicked;
     const DeeperQArray = this.shuffle(this.state.DeeperQArray);
     const IcebreakQArray = this.shuffle(this.state.IcebreakQArray);
@@ -75,8 +80,9 @@ class App extends Component {
           </Helmet>
         </div>
         <div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "50px", fontSize: "100px" }}>
-            <h1>Connect Anywhere</h1>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "50px", fontSize: "50px" }}>
+            <img style={{ height: "50px", width: "50px", paddingRight: "20px"}} src={require('./style/images/atlaslogo.png')} />
+            <p style={{paddingRight: "1000px"}}>Connect anywhere</p>
           </div>
           <div style={{ width: "100%", display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282, }}>
@@ -84,7 +90,7 @@ class App extends Component {
               {IcebreakQArray && IcebreakQArray.map((card, index) => {
                 return (
                   <div className="animated slideInDown" key={index}>
-                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip} renderButton={true} />
+                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip}/>
                   </div>
                 );
               })}
@@ -94,17 +100,16 @@ class App extends Component {
               {CriticalQArray && CriticalQArray.map((card, index) => {
                 return (
                   <div className="animated slideInDown" key={index}>
-                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.CriticalQArray, 1)}flip={this.flip} renderButton={true}/>
+                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.CriticalQArray, 1)}flip={this.flip}/>
                   </div>
                 );
               })}
             </div>
-
             <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282 }}>
               {DeeperQArray && DeeperQArray.map((card, index) => {
                 return (
                   <div className="animated slideInDown" key={index}>
-                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip} renderButton={true}/>
+                    <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip}/>
                   </div>
                 );
               })}
@@ -115,7 +120,7 @@ class App extends Component {
           {cardsPickedArray && cardsPickedArray.map((card, index) => {
             return (
               <div className="animated slideInUp" key={index}>
-                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip} renderButton={false}/>
+                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip}/>
               </div>
             );
           })}
