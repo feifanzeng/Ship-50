@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
+<<<<<<< HEAD
 import Card from "./components/Card";
 import ActionsButtons from "./components/ActionsButtons";
+=======
+import Card from "./components/Card" ;
+import NextButton from "./components/NextButton" ;
+>>>>>>> change action button to next and flip button
 import { deckArray } from "./utils/DeckArray";
 import { DeeperQArray } from "./utils/DeeperQArray.js";
 import { IcebreakQArray } from "./utils/IcebreakQArray.js";
@@ -16,7 +21,7 @@ class App extends Component {
       IcebreakQArray: IcebreakQArray,
       CriticalQArray: CriticalQArray,
       cardPicked: [],
-      front: true
+      front: false
     };
   };
 
