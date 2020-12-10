@@ -15,37 +15,37 @@ export const IcebreakQArray = [
     },
 
     {
-        question: "",
+        question: "Given the choice of anyone in the world, whom would you want as a dinner guest?",
         index: "4", 
     },
 
     {
-        question: "",
+        question: "What would constitute a \"perfect\" day for you?",
         index: "5", 
     },
 
     {
-        question: "",
+        question: "Be honest, how often do you work from bed?",
         index: "6", 
     },
 
     {
-        question: "",
+        question: "What’s the last great TV show or movie you wanted?",
         index: "7", 
     },
 
     {
-        question: "",
+        question: "What’s the hardest part about working virtually for you? The easiest?",
         index: "8", 
     },
 
     {
-        question: "",
+        question: "What is your favorite item you’ve bought this year?",
         index: "9", 
     },
 
     {
-        question: "",
+        question: "What sport would you compete in if you were in the Olympics?",
         index: "10", 
     },
 
