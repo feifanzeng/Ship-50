@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Card from "./components/Card" ;
+import Card from "./components/Card";
 import { DeeperQArray } from "./utils/DeeperQArray.js";
 import { IcebreakQArray } from "./utils/IcebreakQArray.js";
 import { CriticalQArray } from "./utils/CriticalQArray.js";
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import "./style/components/card.scss";
 import NextButton from "./components/NextButton";
 import Catagory from "./components/catagory";
@@ -45,8 +45,8 @@ class App extends Component {
   nextCard = (array, category) => {
     if (array.length != 0) {
       let cardsArray = array;
-//       const randomItem = cardsArray[Math.floor(Math.random() * cardsArray.length)];
-// to
+      //       const randomItem = cardsArray[Math.floor(Math.random() * cardsArray.length)];
+      // to
       const randomItem = cardsArray[0];
       // const randomItem = cardsArray[Math.floor(Math.random() * cardsArray.length)];
       const newCardsArray = cardsArray.filter(element => element.index !== randomItem.index)
@@ -72,9 +72,9 @@ class App extends Component {
 
   render() {
     const cardsPickedArray = this.state.cardPicked;
-    const DeeperQArray = this.shuffle(this.state.DeeperQArray);
-    const IcebreakQArray = this.shuffle(this.state.IcebreakQArray);
-    const CriticalQArray = this.shuffle(this.state.CriticalQArray);
+    // const DeeperQArray = this.shuffle(this.state.DeeperQArray);
+    // const IcebreakQArray = this.shuffle(this.state.IcebreakQArray);
+    // const CriticalQArray = this.shuffle(this.state.CriticalQArray);
 
     return (
       <>
@@ -85,53 +85,53 @@ class App extends Component {
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "left", marginTop: "50px", fontSize: "50px", height: "100px" }}>
-            <img style={{ height: "50px", width: "50px", paddingRight: "20px", paddingLeft: "40px"}} src={require('./style/images/atlaslogo.png')} />
+            <img style={{ height: "50px", width: "50px", paddingRight: "20px", paddingLeft: "40px" }} src={require('./style/images/atlaslogo.png')} />
             <p>Bagel</p>
           </div>
           <div style={{ width: "100%", display: "flex" }}>
-            <div style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
               <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282, }}>
                 {IcebreakQArray && IcebreakQArray.map((card, index) => {
                   return (
                     <div className="animated slideInDown" key={index}>
-                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip}/>
+                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.IcebreakQArray, 0)} flip={this.flip} />
                     </div>
                   );
                 })}
               </div>
-              <Catagory label={"Icebreakers"}/>
+              <Catagory label={"Icebreakers"} />
             </div>
-            <div style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
               <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282 }}>
                 {CriticalQArray && CriticalQArray.map((card, index) => {
                   return (
                     <div className="animated slideInDown" key={index}>
-                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.CriticalQArray, 1)}flip={this.flip}/>
+                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.CriticalQArray, 1)} flip={this.flip} />
                     </div>
                   );
                 })}
               </div>
-              <Catagory label={"Critical Thinking"}/>
+              <Catagory label={"Critical Thinking"} />
             </div>
-            <div style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
               <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282 }}>
                 {DeeperQArray && DeeperQArray.map((card, index) => {
                   return (
                     <div className="animated slideInDown" key={index}>
-                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip}/>
+                      <Card front={!this.state.front} question={card.question} nextCard={() => this.nextCard(this.state.DeeperQArray, 2)} flip={this.flip} />
                     </div>
                   );
                 })}
               </div>
-              <Catagory label={"Deep"}/>
+              <Catagory label={"Deep"} />
             </div>
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", paddingTop: "75px"}}>
+        <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", paddingTop: "75px" }}>
           {cardsPickedArray && cardsPickedArray.map((card, index) => {
             return (
               <div className="animated slideInUp" key={index}>
-                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip}/>
+                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip} />
               </div>
             );
           })}
