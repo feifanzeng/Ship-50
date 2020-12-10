@@ -6,18 +6,21 @@ import { deckArray } from "./utils/DeckArray";
 import { DeeperQArray } from "./utils/DeeperQArray.js";
 import { IcebreakQArray } from "./utils/IcebreakQArray.js";
 import { CriticalQArray } from "./utils/CriticalQArray.js";
+
 class App extends Component {
 
   constructor() {
     super(); 
     this.state = {
-      DeeperQArray: DeeperQArray,
+      DeeperQArray:   DeeperQArray,
       IcebreakQArray: IcebreakQArray,
       CriticalQArray: CriticalQArray,
       cardPicked: [],
       front: true
     };
   };
+
+
 
   shuffle = (array) => {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -28,31 +31,33 @@ class App extends Component {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     };
-    this.setState({ cardsArray: array, cardPicked: [] })
+    //this.setState({ cardsArray: array, cardPicked: [] })
     return array;
   };
 
-  dealOneCard = () => {
-    let cardsArray = this.state.cardsArray;
+  nextCard = () => {
+    let cardsArray = this.state.IcebreakQArray;
     const randomItem = cardsArray[Math.floor(Math.random()*cardsArray.length)];
     const newCardsArray = cardsArray.filter(element => element.index !== randomItem.index)
-    this.setState({ cardsArray: newCardsArray })
+    this.setState({ IcebreakQArray: newCardsArray })
     let cardsPickedArray = this.state.cardPicked;
     cardsPickedArray.length < 52 &&
     cardsPickedArray.push(randomItem);
     this.setState({ cardPicked: cardsPickedArray })
   };
 
+
   flip = () => {
     this.setState({ front: !this.state.front})
   };
 
+
   render() {
     // const cardsArray = this.state.cardsArray;
-    // const cardsPickedArray = this.state.cardPicked;
-    const DeeperQArray = this.state.DeeperQArray;
-    const IcebreakQArray = this.state.IcebreakQArray;
-    const CriticalQArray = this.state.CriticalQArray;
+    const cardsPickedArray = this.state.cardPicked;
+    const DeeperQArray =    this.shuffle(this.state.DeeperQArray);
+    const IcebreakQArray =  this.shuffle(this.state.IcebreakQArray);
+    const CriticalQArray =  this.shuffle(this.state.CriticalQArray);
 
     return (
       <>
@@ -61,60 +66,48 @@ class App extends Component {
         </div>
         <div style={{ width: "100%", display: "flex" }}>
           <div  style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282,  }}>
+        
             {IcebreakQArray && IcebreakQArray.map((card, index) => {
               return (
                 <div className="animated slideInDown" key={index}>
-                  <Card front={this.state.front} question={card.question}/>
+                  <Card front={!this.state.front} question={card.question}/>
                 </div>
               ); 
             })}
           </div>
-          {/*<ActionsButtons shuffle={this.shuffle} dealOneCard={this.dealOneCard} flip={this.flip} deckArray={deckArray} />*/}
-          {/* <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
+          
+          <ActionsButtons nextCard={this.nextCard} flip={this.flip} deckArray={IcebreakQArray} />
+
+          <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
             {cardsPickedArray && cardsPickedArray.map((card, index) => {
               return (
                 <div className="animated slideInUp" key={index}>
-                  <Card suits={card.suits} card={card.card} color={card.color} front={true}/>
+                  <Card front={true} question={card.question}/>
                 </div>
               ); 
             })}
-          </div> */}
+          </div>
+        
           <div  style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
             {CriticalQArray && CriticalQArray.map((card, index) => {
               return (
                 <div className="animated slideInDown" key={index}>
-                  <Card suits={card.suits} card={card.card} color={card.color} front={this.state.front} question={"what is ur fav food?"}/>
+                  <Card front={!this.state.front} question={card.question}/>
                 </div>
               ); 
             })}
           </div>
-          {/* <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
-            {cardsPickedArray && cardsPickedArray.map((card, index) => {
-              return (
-                <div className="animated slideInUp" key={index}>
-                  <Card suits={card.suits} card={card.card} color={card.color} front={true}/>
-                </div>
-              ); 
-            })}
-          </div> */}
+
           <div  style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", height: 282 }}>
             {DeeperQArray && DeeperQArray.map((card, index) => {
               return (
                 <div className="animated slideInDown" key={index}>
-                  <Card suits={card.suits} card={card.card} color={card.color} front={this.state.front} question={"what is ur fav food?"}/>
+                  <Card front={!this.state.front} question={card.question}/>
                 </div>
               ); 
             })}
           </div>
-          {/* <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px" }}>
-            {cardsPickedArray && cardsPickedArray.map((card, index) => {
-              return (
-                <div className="animated slideInUp" key={index}>
-                  <Card suits={card.suits} card={card.card} color={card.color} front={true}/>
-                </div>
-              ); 
-            })}
-          </div> */}
+
         </div>
       </>
     );

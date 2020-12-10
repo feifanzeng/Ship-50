@@ -7,8 +7,10 @@ import diamond from "../style/images/diamond.png";
 import club from "../style/images/club.png";
 import spade from "../style/images/spade.png";
 import Button from '@atlaskit/button';
+import ActionsButtons from "./ActionsButtons";
 
-export default () => <Button>Default button</Button>;
+
+//export default () => <Button>Default button</Button>;
 
 import "../style/components/card.scss";
 
@@ -49,6 +51,7 @@ const Card = (props) => {
           <div style={{ maxWidth: 20 }}>{card}</div>
           <img src={cardSymbol} alt="suit-symbol" style={{ maxWidth: 20 }}/>        
         </div> */}
+
       </div> 
     );
   } else {

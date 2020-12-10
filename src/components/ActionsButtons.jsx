@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 const ActionsButtons = (props) => {
   return (
     <div style={{ margin: "40px auto", textAlign: "center" }}>
-      <button onClick={() => props.shuffle(props.deckArray)}>Shuffle</button>
-      <button onClick={() => props.dealOneCard()}>Deal one card</button>
+      <button onClick={() => props.nextCard()}>Next</button>
       <button onClick={() => props.flip()}>Flip</button>
     </div>
   );
@@ -13,7 +12,7 @@ const ActionsButtons = (props) => {
 
 ActionsButtons.propTypes = {
   shuffle: PropTypes.func,
-  dealOneCard: PropTypes.func,
+  nextCard: PropTypes.func,
   flip: PropTypes.func,
   deckArray: PropTypes.array
 };
