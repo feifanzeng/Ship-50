@@ -131,10 +131,10 @@ class App extends Component {
         </div>
         <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 180px", paddingTop: "75px" }}>
           {cardsPickedArray && cardsPickedArray.map((card, index) => {
-            console.log(cardsPickedArray);
+            console.log(card);
             return (
               <div className="animated slideInUp" key={index}>
-                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip} />
+                <Card front={true} question={card.question} nextCard={this.nextCard} flip={this.flip} cardImage={card.Catagory}/>
               </div>
             );
           })}
