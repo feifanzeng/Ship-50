@@ -18,10 +18,12 @@ const useStyles = makeStyles({
 
 const NextButton = (props) => {
 
+  const {text} = props
+
   const classes = useStyles();
   return (
     <div style={{ margin: "40px auto", textAlign: "center" }}>
-      <Button className={classes.root} onClick={() => props.nextCard()}> Next</Button>
+      <Button className={classes.root} onClick={() => props.nextCard()}> {text} </Button>
     </div>
   );
 };
@@ -29,7 +31,8 @@ const NextButton = (props) => {
 NextButton.propTypes = {
   shuffle: PropTypes.func,
   nextCard: PropTypes.func,
-  deckArray: PropTypes.array
+  deckArray: PropTypes.array,
+  text: PropTypes.string
 };
 
 export default NextButton;

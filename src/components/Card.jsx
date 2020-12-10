@@ -23,7 +23,7 @@ import FlipButton from "./FlipButton";
 
 const Card = (props) => {
 
-  const { card, front, color, question, nextCard, flip} = props;
+  const { card, front, color, question, nextCard, flip, renderButton} = props;
 
   //const classes = useStyles();
 
@@ -35,7 +35,13 @@ const Card = (props) => {
           <img className="card-image" src={cardImage}/>
             <p className="card-question"> {question} </p>
         </div>
-        <NextButton nextCard={nextCard} > Next</NextButton>
+        {
+          renderButton ? (
+            <NextButton nextCard={nextCard} text="Next"></NextButton>
+          ) : (
+            null
+          )
+        }
       </div> 
     );
   } else {
@@ -43,7 +49,8 @@ const Card = (props) => {
       //switch with our atlassian theme picture
       <div className="card-container">
         <img className="back-card" src={backCardImage} />
-        <FlipButton flip={flip}> Flip </FlipButton>
+        <NextButton nextCard={nextCard} text="Flip" ></NextButton>
+        {/* <FlipButton flip={flip}> Flip </FlipButton> */}
       </div>
     );
   };
