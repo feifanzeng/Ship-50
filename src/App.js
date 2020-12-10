@@ -6,11 +6,15 @@ import ActionsButtons from "./components/ActionsButtons";
 =======
 import Card from "./components/Card" ;
 import NextButton from "./components/NextButton" ;
+<<<<<<< HEAD
 >>>>>>> change action button to next and flip button
 import { deckArray } from "./utils/DeckArray";
+=======
+>>>>>>> Change background colour
 import { DeeperQArray } from "./utils/DeeperQArray.js";
 import { IcebreakQArray } from "./utils/IcebreakQArray.js";
 import { CriticalQArray } from "./utils/CriticalQArray.js";
+import {Helmet} from 'react-helmet';
 
 class App extends Component {
 
