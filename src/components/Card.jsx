@@ -18,7 +18,7 @@ const Card = (props) => {
       <div className="card-container">
         <div>
           <img className="card-image" src={cardImage}/>
-            <p className="card-question"> {question} </p>
+            <p style={{ paddingTop: "13px "}} className="card-question"> {question} </p>
         </div>
       </div> 
     );

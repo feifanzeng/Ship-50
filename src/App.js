@@ -80,9 +80,9 @@ class App extends Component {
           </Helmet>
         </div>
         <div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "50px", fontSize: "50px" }}>
-            <img style={{ height: "50px", width: "50px", paddingRight: "20px"}} src={require('./style/images/atlaslogo.png')} />
-            <p style={{paddingRight: "1000px"}}>Connect anywhere</p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "left", marginTop: "50px", fontSize: "50px", height: "100px" }}>
+            <img style={{ height: "50px", width: "50px", paddingRight: "20px", paddingLeft: "40px"}} src={require('./style/images/atlaslogo.png')} />
+            <p>Connect anywhere</p>
           </div>
           <div style={{ width: "100%", display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "center", margin: "40px auto 0px 275px", height: 282, }}>
