@@ -74,9 +74,9 @@ class App extends Component {
 
   render() {
     const cardsPickedArray = this.state.cardPicked;
-    // const DeeperQArray = this.shuffle(this.state.DeeperQArray);
-    // const IcebreakQArray = this.shuffle(this.state.IcebreakQArray);
-    // const CriticalQArray = this.shuffle(this.state.CriticalQArray);
+    const DeeperQArray = this.state.DeeperQArray;
+    const IcebreakQArray = this.state.IcebreakQArray;
+    const CriticalQArray = this.state.CriticalQArray;
 
     return (
       <>
